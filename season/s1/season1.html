@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Season 1</title>
+    <link rel="stylesheet" href="season1.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://i.imgur.com/JoCHYgx.png" alt="POKEFLIX">
+            <span class="logo-text">POKÉFLIX</span>
+        </div>
+        <a href="../index.html" class="back-button">< Back</a>
+    </header>
+
+    <main>
+        <div class="video-container">
+            <iframe id="videoPlayer" src="https://jumpshare.com/embed/44Ap432OXstZbUjvBBig" 
+                frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen 
+                style="width: 100%; height: 315px;">
+            </iframe>
+        </div>
+
+        <div class="episode-list" id="episodeList"></div>
+    </main>
+
+    <script>
+        const episodeList = document.getElementById('episodeList');
+        const videoPlayer = document.getElementById('videoPlayer');
+
+        const episodeLinks = [
+            "https://jumpshare.com/embed/44Ap432OXstZbUjvBBig", // Episode 1
+            "https://jumpshare.com/embed/Fnsg2c57tJsbgefppmVK", // Episode 2
+            "https://example.com/embed/episode3",
+            "https://example.com/embed/episode4",
+            "https://example.com/embed/episode5"
+        ];
+
+        for (let i = 0; i < episodeLinks.length; i++) {
+            let button = document.createElement('button');
+            button.className = 'episode-btn';
+            button.textContent = `Episode ${i + 1}`;
+            button.dataset.src = episodeLinks[i];
+
+            button.addEventListener('click', function () {
+                videoPlayer.src = this.dataset.src;
+            });
+
+            episodeList.appendChild(button);
+        }
+    </script>
+</body>
+        </html>
+          
